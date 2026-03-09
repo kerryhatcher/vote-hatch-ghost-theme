@@ -469,6 +469,70 @@ ul, ol {
 }
 
 /* ==========================================================================
+   Home: About Preview
+   ========================================================================== */
+
+.home-about {
+    padding: var(--space-2xl) var(--space-md);
+    background: var(--color-bg);
+}
+
+.home-about-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2xl);
+    align-items: center;
+}
+
+.home-about-image img {
+    width: 100%;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.home-about-content .section-heading {
+    text-align: left;
+    margin-bottom: var(--space-md);
+}
+
+.home-about-excerpt {
+    font-size: 1.8rem;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-lg);
+}
+
+.home-about-excerpt p {
+    margin: 0;
+}
+
+/* ==========================================================================
+   Home: Platform Highlights
+   ========================================================================== */
+
+.home-platform {
+    padding: var(--space-2xl) var(--space-md);
+    background: var(--color-bg-alt);
+    text-align: center;
+}
+
+.home-platform .section-heading {
+    margin-bottom: var(--space-md);
+}
+
+.home-platform-excerpt {
+    font-size: 1.8rem;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    max-width: 70rem;
+    margin: 0 auto var(--space-xl);
+}
+
+.home-platform-excerpt p {
+    margin: 0;
+}
+
+/* ==========================================================================
    Newsletter Signup
    ========================================================================== */
 
@@ -1458,6 +1522,20 @@ button:focus:not(:focus-visible) {
 
     .mobile-menu-toggle {
         display: flex;
+    }
+
+    .home-about-inner {
+        grid-template-columns: 1fr;
+        gap: var(--space-xl);
+    }
+
+    .home-about-content .section-heading {
+        text-align: center;
+    }
+
+    .home-about-excerpt,
+    .home-platform-excerpt {
+        font-size: 1.6rem;
     }
 
     .hero-heading {
