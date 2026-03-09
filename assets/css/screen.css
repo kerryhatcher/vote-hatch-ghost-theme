@@ -388,6 +388,12 @@ ul, ol {
     flex: 1;
 }
 
+/* Override Ghost-injected cover image on homepage */
+body.home-template {
+    background-image: none !important;
+    background-color: var(--color-bg) !important;
+}
+
 /* ==========================================================================
    Hero Section
    ========================================================================== */
@@ -484,10 +490,17 @@ ul, ol {
     align-items: center;
 }
 
+.home-about-image {
+    display: flex;
+    justify-content: center;
+}
+
 .home-about-image img {
     width: 100%;
+    max-width: 40rem;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
+    object-fit: cover;
 }
 
 .home-about-content .section-heading {

@@ -55,6 +55,9 @@
             "youtube_url": {
                 "type": "text"
             },
+            "about_image": {
+                "type": "image"
+            },
             "show_cta_bar": {
                 "type": "boolean",
                 "default": true
