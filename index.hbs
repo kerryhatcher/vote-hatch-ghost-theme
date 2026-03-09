@@ -1,9 +1,21 @@
 {{!< default}}
 
-<div class="post-feed">
-    {{#foreach posts}}
-        {{> "list-post"}}
-    {{/foreach}}
-</div>
+{{#if @first}}
+{{> hero}}
+{{/if}}
 
-{{pagination}}
+<section class="feed-section">
+    <div class="container">
+        {{#unless @first}}
+        <h2 class="section-heading">Latest Updates</h2>
+        {{/unless}}
+
+        <div class="post-feed">
+            {{#foreach posts}}
+                {{> "list-post"}}
+            {{/foreach}}
+        </div>
+
+        {{pagination}}
+    </div>
+</section>

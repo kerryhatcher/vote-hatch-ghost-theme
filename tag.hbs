@@ -1,16 +1,21 @@
 {{!< default}}
 
 <header class="tag-header">
+    {{#if tag.feature_image}}
+    <img class="tag-image" src="{{tag.feature_image}}" alt="{{tag.name}}" loading="lazy">
+    {{/if}}
     <h1 class="tag-title">{{tag.name}}</h1>
     {{#if tag.description}}
     <p class="tag-description">{{tag.description}}</p>
     {{/if}}
 </header>
 
-<div class="post-feed">
-    {{#foreach posts}}
-        {{> "list-post"}}
-    {{/foreach}}
-</div>
+<div class="tag-feed container">
+    <div class="post-feed">
+        {{#foreach posts}}
+            {{> "list-post"}}
+        {{/foreach}}
+    </div>
 
-{{pagination}}
+    {{pagination}}
+</div>

@@ -1,0 +1,15 @@
+<section class="hero" aria-label="Campaign hero">
+    <div class="hero-content">
+        <h1 class="hero-heading">{{@custom.hero_heading}}</h1>
+        <p class="hero-subheading">{{@custom.hero_subheading}}</p>
+
+        <div class="hero-actions">
+            <a href="{{@custom.platform_url}}" class="btn btn-lg btn-outline">See My Platform</a>
+            <a href="{{@custom.donate_url}}" class="btn btn-lg btn-accent">Chip In</a>
+        </div>
+
+        <div class="hero-newsletter">
+            {{> newsletter-signup}}
+        </div>
+    </div>
+</section>

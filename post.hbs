@@ -1,7 +1,7 @@
 {{!< default}}
 
 {{#post}}
-<article class="{{post_class}}">
+<article class="single-post {{post_class}}">
     <header class="post-header">
         <h1 class="post-title">{{title}}</h1>
         <div class="post-meta">
@@ -12,19 +12,30 @@
             <span class="post-author">by <a href="{{url}}">{{name}}</a></span>
             {{/primary_author}}
             {{#primary_tag}}
-            <span class="post-tag"><a href="{{url}}">{{name}}</a></span>
+            <span class="post-tag-meta"><a href="{{url}}">{{name}}</a></span>
             {{/primary_tag}}
         </div>
-        {{#if feature_image}}
-        <figure class="post-feature-image">
-            <img src="{{feature_image}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}">
-        </figure>
-        {{/if}}
     </header>
+
+    {{#if feature_image}}
+    <figure class="post-feature-image">
+        <img srcset="{{img_url feature_image size="m"}} 600w,
+                     {{img_url feature_image size="l"}} 1000w,
+                     {{img_url feature_image size="xl"}} 2000w"
+             sizes="(max-width: 740px) 100vw, 740px"
+             src="{{img_url feature_image size="l"}}"
+             alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}">
+        {{#if feature_image_caption}}
+        <figcaption>{{feature_image_caption}}</figcaption>
+        {{/if}}
+    </figure>
+    {{/if}}
 
     <section class="post-content">
         {{content}}
     </section>
+
+    {{> social-share}}
 
     <footer class="post-footer">
         {{#if tags}}
@@ -35,5 +46,11 @@
         </div>
         {{/if}}
     </footer>
+
+    <div class="post-newsletter-cta reveal">
+        <h3>Stay in the Loop</h3>
+        <p>Get campaign updates delivered straight to your inbox.</p>
+        {{> newsletter-signup}}
+    </div>
 </article>
 {{/post}}
