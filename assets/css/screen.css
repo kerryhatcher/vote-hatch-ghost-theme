@@ -1314,7 +1314,7 @@ ul, ol {
 .site-footer {
     background-color: var(--color-primary-dark);
     color: var(--color-white);
-    padding: var(--space-2xl) var(--space-md) var(--space-xl);
+    padding: var(--space-2xl) var(--space-md) 8rem;
 }
 
 .footer-grid {
