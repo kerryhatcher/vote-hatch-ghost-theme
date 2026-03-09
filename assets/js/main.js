@@ -238,6 +238,59 @@
     }
 
     // ========================================================================
+    // Newsletter Subscribe Feedback
+    // ========================================================================
+
+    var newsletterForms = document.querySelectorAll('[data-members-form="subscribe"]');
+
+    newsletterForms.forEach(function (form) {
+        var wrapper = form.closest('.newsletter-signup');
+        if (!wrapper) return;
+
+        var successMsg = wrapper.querySelector('[data-members-success]');
+        var errorMsg = wrapper.querySelector('[data-members-error]');
+        var submitBtn = form.querySelector('button[type="submit"]');
+        var emailInput = form.querySelector('[data-members-email]');
+
+        // Watch for Ghost adding loading/success/error classes to the form
+        var formObserver = new MutationObserver(function (mutations) {
+            mutations.forEach(function (mutation) {
+                if (mutation.attributeName !== 'class') return;
+
+                var classList = form.classList;
+
+                if (classList.contains('success')) {
+                    form.style.display = 'none';
+                    if (successMsg) successMsg.style.display = 'block';
+                    if (errorMsg) errorMsg.style.display = 'none';
+                }
+
+                if (classList.contains('error')) {
+                    if (errorMsg) {
+                        errorMsg.style.display = 'block';
+                        if (!errorMsg.textContent) {
+                            errorMsg.textContent = 'Something went wrong. Please try again.';
+                        }
+                    }
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Subscribe';
+                    }
+                }
+
+                if (classList.contains('loading')) {
+                    if (submitBtn) {
+                        submitBtn.disabled = true;
+                        submitBtn.textContent = 'Sending…';
+                    }
+                }
+            });
+        });
+
+        formObserver.observe(form, { attributes: true });
+    });
+
+    // ========================================================================
     // Copy Link (Social Share)
     // ========================================================================
 
