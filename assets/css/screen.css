@@ -287,6 +287,8 @@ ul, ol {
     display: flex;
     gap: var(--space-lg);
     list-style: none;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .header-nav .nav a {
@@ -394,6 +396,18 @@ ul, ol {
     width: 100%;
     max-width: 30rem;
     text-align: center;
+}
+
+/* Nav collapsed state (JS overflow detection) */
+
+.site-header.nav-collapsed .header-nav,
+.site-header.nav-collapsed .header-cta {
+    display: none;
+}
+
+.site-header.nav-collapsed .mobile-menu-toggle {
+    display: flex;
+    margin-left: auto;
 }
 
 /* ==========================================================================
@@ -1045,24 +1059,6 @@ ul, ol {
     font-size: 1.4rem;
 }
 
-.cta-bar-dismiss {
-    position: absolute;
-    right: var(--space-md);
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    color: rgba(255, 255, 255, 0.7);
-    cursor: pointer;
-    padding: var(--space-xs);
-    font-size: 2rem;
-    line-height: 1;
-    transition: color var(--transition-fast);
-}
-
-.cta-bar-dismiss:hover {
-    color: var(--color-white);
-}
 
 /* ==========================================================================
    Tag & Author Pages
@@ -1543,11 +1539,7 @@ button:focus:not(:focus-visible) {
     }
 }
 
-@media (max-width: 768px) {
-    :root {
-        --header-height: 6rem;
-    }
-
+@media (max-width: 1100px) {
     .header-nav,
     .header-cta {
         display: none;
@@ -1555,6 +1547,13 @@ button:focus:not(:focus-visible) {
 
     .mobile-menu-toggle {
         display: flex;
+        margin-left: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --header-height: 6rem;
     }
 
     .home-about-inner {

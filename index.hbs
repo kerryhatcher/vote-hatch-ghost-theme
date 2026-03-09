@@ -4,8 +4,8 @@
 {{> hero}}
 
 {{!-- About preview section --}}
-{{#get "pages" filter="slug:about" limit="1"}}
-    {{#foreach pages}}
+{{#get "posts" filter="slug:about-me" limit="1"}}
+    {{#foreach posts}}
     <section class="home-about reveal" aria-label="About the candidate">
         <div class="container">
             <div class="home-about-inner">

@@ -148,35 +148,61 @@
     }
 
     // ========================================================================
+    // Nav Overflow Detection
+    // ========================================================================
+
+    var siteHeader = document.querySelector('.site-header');
+    var headerNav = siteHeader ? siteHeader.querySelector('.header-nav .nav') : null;
+
+    if (siteHeader && headerNav) {
+        var resizeTimer = null;
+
+        function checkNavOverflow() {
+            // Temporarily remove collapsed class to measure natural width
+            siteHeader.classList.remove('nav-collapsed');
+
+            // Allow layout to recalculate
+            var isOverflowing = headerNav.scrollWidth > headerNav.clientWidth;
+
+            if (isOverflowing) {
+                siteHeader.classList.add('nav-collapsed');
+            }
+        }
+
+        function debouncedCheck() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(checkNavOverflow, 150);
+        }
+
+        window.addEventListener('resize', debouncedCheck);
+
+        // Run on load
+        checkNavOverflow();
+
+        // Re-check after fonts load (font width can change layout)
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(checkNavOverflow);
+        }
+    }
+
+    // ========================================================================
     // CTA Bar Show/Hide/Dismiss
     // ========================================================================
 
     var ctaBar = document.querySelector('.cta-bar');
 
     if (ctaBar) {
-        var dismissed = sessionStorage.getItem('cta-bar-dismissed') === 'true';
-        var ctaDismissBtn = ctaBar.querySelector('.cta-bar-dismiss');
         var ctaShowThreshold = 300;
 
-        if (!dismissed) {
-            function handleCtaScroll() {
-                if (window.scrollY > ctaShowThreshold) {
-                    ctaBar.classList.add('is-visible');
-                } else {
-                    ctaBar.classList.remove('is-visible');
-                }
+        var handleCtaScroll = function () {
+            if (window.scrollY > ctaShowThreshold) {
+                ctaBar.classList.add('is-visible');
+            } else {
+                ctaBar.classList.remove('is-visible');
             }
+        };
 
-            window.addEventListener('scroll', handleCtaScroll, { passive: true });
-
-            if (ctaDismissBtn) {
-                ctaDismissBtn.addEventListener('click', function () {
-                    ctaBar.classList.remove('is-visible');
-                    sessionStorage.setItem('cta-bar-dismissed', 'true');
-                    window.removeEventListener('scroll', handleCtaScroll);
-                });
-            }
-        }
+        window.addEventListener('scroll', handleCtaScroll, { passive: true });
     }
 
     // ========================================================================
