@@ -1,9 +1,61 @@
 {{!< default}}
 
-<div class="post-feed">
-    {{#foreach posts}}
-        {{> "list-post"}}
-    {{/foreach}}
-</div>
+{{#unless pagination.prev}}
+{{> hero}}
 
-{{pagination}}
+{{!-- About preview section --}}
+{{#get "posts" filter="slug:about-me" limit="1"}}
+    {{#foreach posts}}
+    <section class="home-about reveal" aria-label="About the candidate">
+        <div class="container">
+            <div class="home-about-inner">
+                {{#if @custom.about_image}}
+                <div class="home-about-image">
+                    <img src="{{@custom.about_image}}"
+                         alt="{{@site.title}}"
+                         loading="lazy">
+                </div>
+                {{/if}}
+                <div class="home-about-content">
+                    <h2 class="section-heading">Meet the Candidate</h2>
+                    <div class="home-about-excerpt">
+                        <p>{{excerpt words="60"}}</p>
+                    </div>
+                    <a href="{{url}}" class="btn btn-primary">Read More About Me</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    {{/foreach}}
+{{/get}}
+
+{{!-- Platform highlights section --}}
+{{#get "pages" filter="slug:my-platform" limit="1"}}
+    {{#foreach pages}}
+    <section class="home-platform reveal" aria-label="Platform highlights">
+        <div class="container">
+            <h2 class="section-heading">My Platform</h2>
+            <div class="home-platform-excerpt">
+                <p>{{excerpt words="50"}}</p>
+            </div>
+            <a href="{{url}}" class="btn btn-primary btn-lg">See Full Platform</a>
+        </div>
+    </section>
+    {{/foreach}}
+{{/get}}
+
+{{/unless}}
+
+<section class="feed-section">
+    <div class="container">
+        <h2 class="section-heading">Latest Updates</h2>
+
+        <div class="post-feed">
+            {{#foreach posts}}
+                {{> "list-post"}}
+            {{/foreach}}
+        </div>
+
+        {{pagination}}
+    </div>
+</section>

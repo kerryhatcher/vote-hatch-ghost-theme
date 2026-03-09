@@ -1,0 +1,19 @@
+{{!< default}}
+
+{{#post}}
+<article class="page-join {{post_class}}">
+    <header class="page-header">
+        <h1 class="page-title">{{title}}</h1>
+    </header>
+
+    <section class="page-content">
+        {{content}}
+    </section>
+
+    <div class="post-newsletter-cta reveal">
+        <h3>Join the Team</h3>
+        <p>Sign up with your email to get involved.</p>
+        {{> newsletter-signup}}
+    </div>
+</article>
+{{/post}}
