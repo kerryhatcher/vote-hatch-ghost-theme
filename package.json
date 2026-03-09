@@ -1,0 +1,14 @@
+{
+    "name": "vote-hatch-ghost-theme",
+    "description": "A Ghost theme for an election website",
+    "version": "1.0.0",
+    "license": "MIT",
+    "author": {
+        "email": "kerryhatcher@users.noreply.github.com"
+    },
+    "config": {
+        "posts_per_page": 10,
+        "image_sizes": {},
+        "card_assets": true
+    }
+}
