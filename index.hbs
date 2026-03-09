@@ -1,6 +1,6 @@
 {{!< default}}
 
-{{#if @first}}
+{{#unless pagination.prev}}
 {{> hero}}
 
 {{!-- About preview section --}}
@@ -44,7 +44,7 @@
     {{/foreach}}
 {{/get}}
 
-{{/if}}
+{{/unless}}
 
 <section class="feed-section">
     <div class="container">
