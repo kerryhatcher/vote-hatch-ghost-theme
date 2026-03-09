@@ -61,6 +61,18 @@
             "show_cta_bar": {
                 "type": "boolean",
                 "default": true
+            },
+            "show_hero_platform_button": {
+                "type": "boolean",
+                "default": true
+            },
+            "show_hero_donate_button": {
+                "type": "boolean",
+                "default": true
+            },
+            "show_hero_newsletter": {
+                "type": "boolean",
+                "default": true
             }
         }
     },

@@ -26,6 +26,13 @@
             mobileMenu.setAttribute('aria-hidden', 'false');
             document.body.style.overflow = 'hidden';
 
+            // Force opaque header when mobile menu is open on homepage
+            var siteHeader = document.querySelector('.site-header');
+            if (siteHeader && document.body.classList.contains('home-template')) {
+                siteHeader.classList.add('header-opaque');
+                siteHeader.style.backgroundColor = '';
+            }
+
             focusableElements = mobileMenu.querySelectorAll('a, button');
             if (focusableElements.length) {
                 firstFocusable = focusableElements[0];
@@ -41,6 +48,22 @@
             mobileMenu.setAttribute('aria-hidden', 'true');
             document.body.style.overflow = '';
             menuToggle.focus();
+
+            // Recalculate header opacity on homepage after closing menu
+            if (document.body.classList.contains('home-template')) {
+                var siteHeader = document.querySelector('.site-header');
+                var heroEl = document.querySelector('.hero');
+                if (siteHeader && heroEl) {
+                    var opacity = Math.min(window.scrollY / heroEl.offsetHeight, 1);
+                    if (opacity >= 1) {
+                        siteHeader.classList.add('header-opaque');
+                        siteHeader.style.backgroundColor = '';
+                    } else {
+                        siteHeader.classList.remove('header-opaque');
+                        siteHeader.style.backgroundColor = 'rgba(0, 85, 184, ' + opacity + ')';
+                    }
+                }
+            }
         }
 
         function isMenuOpen() {
@@ -93,12 +116,30 @@
 
     if (header) {
         var scrollThreshold = 50;
+        var isHomepage = document.body.classList.contains('home-template');
+        var hero = isHomepage ? document.querySelector('.hero') : null;
 
         function handleScroll() {
-            if (window.scrollY > scrollThreshold) {
+            var scrollY = window.scrollY;
+
+            if (scrollY > scrollThreshold) {
                 header.classList.add('header-scrolled');
             } else {
                 header.classList.remove('header-scrolled');
+            }
+
+            // Homepage: fade header background from transparent to opaque
+            if (isHomepage && hero) {
+                var heroHeight = hero.offsetHeight;
+                var opacity = Math.min(scrollY / heroHeight, 1);
+
+                if (opacity >= 1) {
+                    header.classList.add('header-opaque');
+                    header.style.backgroundColor = '';
+                } else {
+                    header.classList.remove('header-opaque');
+                    header.style.backgroundColor = 'rgba(0, 85, 184, ' + opacity + ')';
+                }
             }
         }
 

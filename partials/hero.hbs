@@ -4,12 +4,18 @@
         <p class="hero-subheading">{{@custom.hero_subheading}}</p>
 
         <div class="hero-actions">
+            {{#if @custom.show_hero_platform_button}}
             <a href="{{@custom.platform_url}}" class="btn btn-lg btn-outline">See My Platform</a>
+            {{/if}}
+            {{#if @custom.show_hero_donate_button}}
             <a href="{{@custom.donate_url}}" class="btn btn-lg btn-accent">Chip In</a>
+            {{/if}}
         </div>
 
+        {{#if @custom.show_hero_newsletter}}
         <div class="hero-newsletter">
             {{> newsletter-signup}}
         </div>
+        {{/if}}
     </div>
 </section>

@@ -232,6 +232,22 @@ ul, ol {
     box-shadow: var(--shadow-lg);
 }
 
+/* Homepage transparent header */
+.home-template .site-header {
+    position: fixed;
+    width: 100%;
+    background-color: transparent;
+}
+
+.home-template .site-header.header-opaque {
+    background-color: var(--color-primary);
+}
+
+/* Offset content for fixed header on homepage */
+.home-template .hero {
+    padding-top: calc(var(--header-height) + var(--space-3xl));
+}
+
 .header-inner {
     display: flex;
     align-items: center;
@@ -452,6 +468,10 @@ ul, ol {
     justify-content: center;
     flex-wrap: wrap;
     margin-bottom: var(--space-xl);
+}
+
+.hero-actions:empty {
+    display: none;
 }
 
 .hero-newsletter {
@@ -1099,22 +1119,22 @@ ul, ol {
 
 /* About Page */
 
-.page-about {
+.site-main .page-about {
     max-width: 90rem;
     margin: 0 auto;
     padding: var(--space-xl) var(--space-md);
 }
 
-.page-about .page-content {
+.site-main .page-about .page-content {
     font-size: 1.9rem;
 }
 
-.page-about .page-content img {
+.site-main .page-about .page-content img {
     border-radius: var(--radius-lg);
     margin: var(--space-lg) 0;
 }
 
-.page-about .page-content iframe {
+.site-main .page-about .page-content iframe {
     width: 100%;
     border-radius: var(--radius-md);
     margin: var(--space-lg) 0;
@@ -1122,18 +1142,18 @@ ul, ol {
 
 /* Platform Page */
 
-.page-platform {
+.site-main .page-platform {
     max-width: var(--container-width);
     margin: 0 auto;
     padding: var(--space-xl) var(--space-md);
 }
 
-.page-platform .page-title {
+.site-main .page-platform .page-title {
     text-align: center;
     margin-bottom: var(--space-xl);
 }
 
-.page-platform .page-content {
+.site-main .page-platform .page-content {
     font-family: var(--font-sans);
 }
 
@@ -1144,8 +1164,8 @@ ul, ol {
 }
 
 /* Style Ghost editor content as platform cards */
-.page-platform .page-content .kg-card,
-.page-platform .page-content > div {
+.site-main .page-platform .page-content .kg-card,
+.site-main .page-platform .page-content > div {
     background: var(--color-white);
     border-radius: var(--radius-lg);
     padding: var(--space-xl);
@@ -1154,31 +1174,31 @@ ul, ol {
     transition: box-shadow var(--transition-base);
 }
 
-.page-platform .page-content .kg-card:hover,
-.page-platform .page-content > div:hover {
+.site-main .page-platform .page-content .kg-card:hover,
+.site-main .page-platform .page-content > div:hover {
     box-shadow: var(--shadow-md);
 }
 
 /* Chip In / Donate Page */
 
-.page-donate {
+.site-main .page-donate {
     max-width: 80rem;
     margin: 0 auto;
     padding: var(--space-xl) var(--space-md);
     text-align: center;
 }
 
-.page-donate .page-title {
+.site-main .page-donate .page-title {
     font-size: 4.8rem;
     margin-bottom: var(--space-md);
 }
 
-.page-donate .page-content {
+.site-main .page-donate .page-content {
     font-family: var(--font-sans);
     font-size: 1.8rem;
 }
 
-.page-donate .page-content a {
+.site-main .page-donate .page-content a {
     display: inline-flex;
 }
 
@@ -1207,35 +1227,35 @@ ul, ol {
 
 /* Join / Volunteer Page */
 
-.page-join {
+.site-main .page-join {
     max-width: 70rem;
     margin: 0 auto;
     padding: var(--space-xl) var(--space-md);
 }
 
-.page-join .page-title {
+.site-main .page-join .page-title {
     text-align: center;
     margin-bottom: var(--space-md);
 }
 
-.page-join .page-content {
+.site-main .page-join .page-content {
     font-family: var(--font-sans);
 }
 
 /* Contact Page */
 
-.page-contact {
+.site-main .page-contact {
     max-width: 70rem;
     margin: 0 auto;
     padding: var(--space-xl) var(--space-md);
 }
 
-.page-contact .page-title {
+.site-main .page-contact .page-title {
     text-align: center;
     margin-bottom: var(--space-xl);
 }
 
-.page-contact .page-content {
+.site-main .page-contact .page-content {
     font-family: var(--font-sans);
 }
 
