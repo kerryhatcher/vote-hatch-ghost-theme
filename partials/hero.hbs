@@ -1,4 +1,4 @@
-<section class="hero" aria-label="Campaign hero">
+<section class="hero{{#if @site.cover_image}} hero-has-cover{{/if}}" aria-label="Campaign hero"{{#if @site.cover_image}} style="background-image: url({{@site.cover_image}})"{{/if}}>
     <div class="hero-content">
         <h1 class="hero-heading">{{@custom.hero_heading}}</h1>
         <p class="hero-subheading">{{@custom.hero_subheading}}</p>

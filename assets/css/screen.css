@@ -388,12 +388,6 @@ ul, ol {
     flex: 1;
 }
 
-/* Override Ghost-injected cover image on homepage */
-body.home-template {
-    background-image: none !important;
-    background-color: var(--color-bg) !important;
-}
-
 /* ==========================================================================
    Hero Section
    ========================================================================== */
@@ -411,14 +405,20 @@ body.home-template {
     overflow: hidden;
 }
 
-.hero::before {
+.hero.hero-has-cover {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero.hero-has-cover::before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(ellipse at 30% 50%, rgba(244, 197, 92, 0.15) 0%, transparent 60%);
+    background: linear-gradient(135deg, rgba(0, 55, 130, 0.75) 0%, rgba(0, 35, 85, 0.85) 100%);
     pointer-events: none;
 }
 
